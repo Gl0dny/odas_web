@@ -7,9 +7,64 @@ A desktop user interface for the [ODAS](https://github.com/introlab/odas) librar
 ODAS Studio is a desktop interface built to visually represents data produced by the ODAS algorithm and manage recordings of separated audio sources. ODAS Studio represents audio energy and tracked audio sources on an unit sphere and is a powerful tool when tuning ODAS settings. ODAS Studio also records separated audio as distinct wav files. ODAS Studio is built on the Electron framework and can be run natively on PC, Mac and Linux.
 
 ## Installation
-1. Install Node.js v12
-1. Clone the repository
-1. Run _npm install_ in the cloned repository base folder (it contains _main.js_)
+
+**Install nvm (Node Version manager)**
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+```
+
+**Load nvm into your shell session**
+```
+export NVM_DIR="$HOME/.nvm" [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+```
+
+**Install Node.js version 12**
+```
+nvm install 12 
+nvm use 12
+```
+
+**Install Python 2**
+```
+sudo apt update
+sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev curl libbz2-dev
+
+cd /usr/src
+sudo curl -O https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz
+sudo tar xzf Python-2.7.18.tgz
+
+cd Python-2.7.18
+sudo ./configure --enable-optimizations
+make -j $(nproc)
+sudo make altinstall
+
+python2.7 --version
+
+```
+
+**Clone the ODAS Studio repository**
+```
+git clone git@github.com:Gl0dny/odas_web.git
+cd odas_web
+```
+
+**Install ODAS Studio**
+```
+npm install --python=python2.7
+npm rebuild
+```
+To run:
+```
+npm start
+```
+
+To run via ssh:
+```
+export DISPLAY=:0
+npm start
+```
+
+
 
 Please note that even if ODAS Studio can be installed on a Raspberry Pi, it will not perform properly due to CPU limitations. Please see the ODAS configuration section for instructions on how to sink data from a Pi running ODAS to another computer trough sockets.
 
