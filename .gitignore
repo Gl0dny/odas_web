@@ -4,3 +4,4 @@ build
 config
 *.raw
 *.wav
+odas_gui
